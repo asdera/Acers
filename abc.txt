@@ -1,0 +1,30 @@
+abc
+easy as one two three
+
+
+The following should work:
+Drawing arcs
+context.moveTo(cx,cy);
+context.arc(cx,cy,radius,startangle,endangle);
+context.lineTo(cx,cy);
+context.stroke(); // or context.fill()
+
+// blades
+  ctxoutty.save();
+  ctxoutty.translate(width/2, width/2);
+  ctxoutty.rotate(spinner.outty.rotation * Math.PI /180);
+  ctxoutty.translate(-width/2, -width/2);
+  spinner.outty.image.src = "Spinners/" + spinner.name + "/Outty.png";
+  ctxoutty.drawImage(spinner.outty.image, -spinner.height, -spinner.height, 720 + spinner.height * 2, 720 + spinner.height *  2);
+  ctxoutty.restore();
+
+  angle = Math.atan2(event.clientX - $("#playa").offset().left - width/2, event.clientY - $("#playa").offset().top - width/2) / Math.PI * 180;
+  if (Math.abs(click.angle - angle) > 180) {
+    val = (width/2 - Math.abs(click.angle - angle)) * ((click.angle - angle) > 0 ? -1 : 1);
+  } else {
+    val = click.angle - angle;
+  }
+  spinner.outty.velocity = val * 0.2;
+  click = {
+    down: false,
+  }
