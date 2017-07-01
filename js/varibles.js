@@ -4,6 +4,7 @@ var player = {
   y: 1900,
   width: 300,
   height: 200,
+  weapon: ["s", "shell"],
   health: 1000,
   power: 0,
   team: null,
@@ -119,6 +120,7 @@ var player2 = {
   y: 1900,
   width: 300,
   height: 200,
+  weapon: ["s", "shell"],
   health: 1000,
   power: 0,
   team: null,
@@ -185,6 +187,8 @@ var player2 = {
       this.x = width - this.width;
       wall[1] = 1;
     }
+    console.log(wall)
+    console.log(this.x)
     if (this.y <= 0) {
       this.y = 0;
     }

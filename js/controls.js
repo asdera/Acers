@@ -24,7 +24,7 @@ function keyboard () {
   } else {
     if (player.nextfire <= 0 && player.power != 0) {
       a = player.rotation - 90;
-      fire(150, 250, player.x + player.width/2, player.y + player.height/2, 150, 150, 25 + player.power, a, 400, pekker);
+      weapon[player.weapon[0]][player.weapon[1]].shoot(player);
       player.nextfire = player.firerate;
     }
     player.power = 0;
@@ -57,7 +57,7 @@ function keyboard2 () {
   } else {
     if (player2.nextfire <= 0 && player2.power != 0) {
       a = player2.rotation - 90;
-      fire(150, 250, player2.x + player2.width/2, player2.y + player2.height/2, 150, 150, 25 + player2.power, a, 400, pekker);
+      weapon[player2.weapon[0]][player2.weapon[1]].shoot(player2);
       player2.nextfire = player2.firerate;
     }
     player2.power = 0;

@@ -17,5 +17,3 @@ neonred = new Image();
 neon.src = "Images/Background/Neon.jpg"
 neonred.src = "Images/Background/Neon.png"
 
-rwall = new Image();
-rwall.src = "Images/Background/Rwall.png"

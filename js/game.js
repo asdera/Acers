@@ -15,10 +15,15 @@ function update () {
   
   wall[0] *= 0.9;
   wall[1] *= 0.9;
+  
   ctxgame.save();
   ctxgame.fillStyle = "blue";
   ctxgame.globalAlpha = wall[0] + 0.2;
   ctxgame.fillRect(0, 0, 60, height);
+  ctxgame.restore();
+  ctxgame.save();
+
+  ctxgame.fillStyle = "blue";
   ctxgame.globalAlpha = wall[1] + 0.2;
   ctxgame.fillRect(width - 60, 0, width, height);
   ctxgame.restore();

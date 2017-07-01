@@ -144,7 +144,7 @@ function fire(damage, radius, x, y, imgwidth, imgheight, vel, angle, time, img, 
     hit: function () {
       player.damage(this.radius, this.damage, this.x + this.width/2, this.y + this.height/2);
       player2.damage(this.radius, this.damage, this.x + this.width/2, this.y + this.height/2);
-      explodsion(this.x + this.width/2, this.y + this.height/2, 50, 8);
+      explodsion(this.x + this.width/2, this.y + this.height/2, this.radius - 100, 8);
     },
     enemies: typeof collision.enemies  === "undefined" ? function () {} : collision.enemies,
     friends: typeof collision.friends  === "undefined" ? function () {} : collision.friends,
@@ -165,15 +165,13 @@ function explodsion(x, y, radius, frames) {
     time: frames,
     update: function () {
       this.frame++;
-      this.time--;
-      this.radius += 10;
-      if (this.time < 0) {
+      if (this.time < this.frame) {
         return true;
       }
       ctxgame.save();
       ctxgame.beginPath();
       ctxgame.moveTo(this.x, this.y);
-      ctxgame.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctxgame.arc(this.x, this.y, this.radius * this.frame / this.time, 0, Math.PI * 2);
       ctxgame.lineTo(this.x, this.y);
       ctxgame.closePath();
       ctxgame.stroke();
