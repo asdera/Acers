@@ -119,7 +119,8 @@ function fire(damage, radius, x, y, imgwidth, imgheight, vel, angle, time, img, 
         this.velx = -this.velx;
         wall[1] = 1;
       }
-      if (this.y >= 2000) {
+      if (ctxgame.isPointInPath(this.x + this.width/2, this.y + this.height/2)) {
+        this.y = ground.clip(this.x + this.width/2);
         this.hit();
         return true;
       }
@@ -140,8 +141,13 @@ function fire(damage, radius, x, y, imgwidth, imgheight, vel, angle, time, img, 
         ctxgame.drawImage(this.img, this.x, this.y, this.width, this.height);
         ctxgame.restore();
       }
+      if (this.y >= height) {
+        this.hit();
+        return true;
+      }
     },
     hit: function () {
+      ground.damage(this.radius, this.damage, this.x + this.width/2, this.y + this.height/2);
       player.damage(this.radius, this.damage, this.x + this.width/2, this.y + this.height/2);
       player2.damage(this.radius, this.damage, this.x + this.width/2, this.y + this.height/2);
       explodsion(this.x + this.width/2, this.y + this.height/2, this.radius - 100, 8);

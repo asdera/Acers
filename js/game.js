@@ -32,8 +32,8 @@ function update () {
   ctxgame.globalAlpha = 0.4;
   ctxgame.beginPath();
   ctxgame.moveTo(0, height);
-  for (i in ground) {
-    ctxgame.lineTo(i * width, ground[i]);
+  for (i in ground.points) {
+    ctxgame.lineTo(i * ground.distance, ground.points[i]);
   }
   ctxgame.lineTo(width, height);
   ctxgame.lineTo(0, height);
