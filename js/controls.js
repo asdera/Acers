@@ -1,11 +1,11 @@
 function keyboard () {
   if (keys[87]) {
     // up
-    player.velx += player.speed;
+    player.velx += player.speed * Math.cos(player.tilt * Math.PI / 180);
   }
   if (keys[83]) {
     // down
-    player.velx -= player.speed;
+    player.velx -= player.speed * Math.cos(player.tilt * Math.PI / 180);
   }
   if (keys[65]) {
     // left
@@ -34,11 +34,11 @@ function keyboard () {
 function keyboard2 () {
   if (keys[38]) {
     // up
-    player2.velx += player2.speed; 
+    player2.velx += player2.speed * Math.cos(player2.tilt * Math.PI / 180);; 
   }
   if (keys[40]) {
     // down
-    player2.velx -= player2.speed;
+    player2.velx -= player2.speed * Math.cos(player2.tilt * Math.PI / 180);;
   }
   if (keys[37]) {
     // left

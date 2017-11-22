@@ -147,7 +147,6 @@ function fire(damage, radius, x, y, imgwidth, imgheight, vel, angle, time, img, 
       }
     },
     hit: function () {
-      ground.damage(this.radius, this.damage, this.x + this.width/2, this.y + this.height/2);
       player.damage(this.radius, this.damage, this.x + this.width/2, this.y + this.height/2);
       player2.damage(this.radius, this.damage, this.x + this.width/2, this.y + this.height/2);
       explodsion(this.x + this.width/2, this.y + this.height/2, this.radius - 100, 8);
@@ -172,6 +171,7 @@ function explodsion(x, y, radius, frames) {
     update: function () {
       this.frame++;
       if (this.time < this.frame) {
+        ground.damage(this.radius, this.x, this.y);
         return true;
       }
       ctxgame.save();

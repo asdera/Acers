@@ -269,12 +269,14 @@ var player2 = {
 }
 
 var ground = {
-  number: 96,
+  number: 960,
   points: [1200],
-  damage: function (radius, damage, x, y) {
+  damage: function (radius, x, y) {
     for (i = Math.floor((x - radius) / this.distance); i < Math.floor((x + radius) / this.distance) + 1; i++) {
       if (Math.sqrt((i * this.distance - x) ** 2 + (this.points[i] - y) ** 2) <= radius  || (Math.abs(i * this.distance - x) <= radius && this.points[i] <= y)) {
-        this.points[i] += damage;
+        span = Math.sqrt(radius**2 - (x - i * this.distance)**2);
+        change = (y + span) - this.points[i];
+        this.points[i] += Math.max(Math.min(change, span*2), 0);
       }
     }
   },
@@ -290,7 +292,7 @@ var ground = {
 }
 
 ground.distance = width / ground.number;
-for (i = 0; i < 96; i++) {
+for (i = 0; i < ground.number; i++) {
   ground.points.push(1200);
 }
   
