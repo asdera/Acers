@@ -47,8 +47,12 @@ function update () {
       bullets.splice(b,1);
     }
   }
-  player.update();
-  player2.update(); 
+  if (!player.dead) {
+    player.update();
+  }
+  if (!player2.dead) {
+    player2.update();
+  }
   
   if (player.health > 0) {
     ctxgame.fillStyle = "red";

@@ -22,6 +22,7 @@ var player = {
   nextfire: 0,
   firerate: 40,
   ability: 0,
+  dead: false,
   record: {
     shotsfired: 0,
     shotshit: 0,
@@ -32,7 +33,7 @@ var player = {
   temp: {
   },
   update: function () {
-    if (this.health <= 0) {
+    if (this.health <= 0 && this.dead == false) {
       this.death();
     }
     eff = this.effects.length
@@ -116,7 +117,8 @@ var player = {
     }
   },
   death: function () {
-
+    explodsion(this.x + this.width/2, this.y + this.height/2, 1000, 40);
+    this.dead = true;
   },
   angle: function () {
 
@@ -150,6 +152,7 @@ var player2 = {
   nextfire: 0,
   firerate: 40,
   ability: 0,
+  dead: false,
   record: {
     shotsfired: 0,
     shotshit: 0,
@@ -160,7 +163,7 @@ var player2 = {
   temp: {
   },
   update: function () {
-    if (this.health <= 0) {
+    if (this.health <= 0 && this.dead == false) {
       this.death();
     }
     eff = this.effects.length
@@ -258,7 +261,8 @@ var player2 = {
     }
   },
   death: function () {
-
+    explodsion(this.x + this.width/2, this.y + this.height/2, 1000, 40);
+    this.dead = true;
   },
   angle: function () {
 
